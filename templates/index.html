@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <form action='/' method="POST">
+            <div class="mb-3 my-3">
+                <label for="location" class="form-label" style="font-size: 20px; font-weight: bold;">Enter your location</label>
+                <input type="text" class="form-control" name="location" id="location" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-dark my-3">Get Weather</button>
+        </form>
+
+        {% if weather_data %}
+
+        <div class="card mt-5">
+            <div class="card-header">
+                Weather in {{ weather_data.city }}, {{ weather_data.country }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ weather_data.temperature }}°C</h5>
+                <p class="card-text">{{ weather_data.condition }}</p>
+                <img src="{{ weather_data.icon }}" alt="Weather Icon">
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
